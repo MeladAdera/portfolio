@@ -11,10 +11,10 @@ module.exports = {
     extend: {
       backgroundImage: {
         tea: "url('/hobbies/tea-cup.webp')",
-        blog: "url('/hobbies/myblog.webp')",
+        blog: "url('/hobbies/programming.webp')",
         music:
           "url('/hobbies/negative-space-headphones-black-white-corey-blaz.webp')",
-        grocer: "url('/hobbies/grocer.webp')",
+        grocer: "url('/hobbies/gym.jpg')",
         journaling: "url('/hobbies/journaling.webp')",
         programming: "url('/hobbies/programming.webp')",
         gym: "url('/hobbies/gym.jpg')",

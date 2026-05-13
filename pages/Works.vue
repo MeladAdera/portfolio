@@ -16,19 +16,19 @@ const closeModal = () => {
 };
 
 useHead({
-  title: "Web Developer Portfolio | Career Highlights",
+  title: "Web Developer Portfolio | Freelance work",
   meta: [
     {
       property: "og:title",
-      content: "Web Developer Portfolio | Career Highlights",
+      content: "Web Developer Portfolio | Freelance work",
     },
     {
       property: "og:site_name",
-      content: "Web Developer Portfolio | Career Highlights",
+      content: "Web Developer Portfolio | Freelance work",
     },
     {
       property: "og:site",
-      content: "https://www.eazypau.com/works",
+      content: "https://www.meladadera.com/works",
     },
   ],
 });

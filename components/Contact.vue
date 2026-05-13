@@ -28,9 +28,9 @@
               in my resume.
             </p> -->
             <p v-if="isSeeking">
-              If you have any questions, want to work together or just want to
-              say hi. Feel free to reach me through my email or any of of my
-              contact information in my resume.
+              If you have any questions, want to work together, or just want to
+              say hi, reach me by email or LinkedIn. You can also download my
+              resume below.
             </p>
             <p v-else>
               Although I’m not looking for any new opportunities, my inbox is
@@ -39,14 +39,28 @@
             </p>
           </div>
           <div>
-            <a href="mailto:poyizhi@gmail.com"> <EnvelopeIcon /> Say Hello! </a>
+            <a href="mailto:dev.melad.adera@gmail.com">
+              <EnvelopeIcon /> Say hello
+            </a>
+            <a
+              href="https://www.linkedin.com/in/melad-adera-97105a371/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="linkedin-cta"
+              aria-label="Melad Adera on LinkedIn"
+            >
+              <IconsLinkedInIcon />
+              LinkedIn
+            </a>
             <a
               v-if="isSeeking"
-              href="/resume/my-resume.pdf"
-              download="resume_poyizhi"
+              href="/resume/Melad_Adera_modern-professional.pdf"
+              download="Melad-Adera-Resume.pdf"
               target="_blank"
+              rel="noopener noreferrer"
+              class="resume-cta"
             >
-              <PaperClipIcon /> My Resume
+              <PaperClipIcon /> Download resume
             </a>
           </div>
         </div>

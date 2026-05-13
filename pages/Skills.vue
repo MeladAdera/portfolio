@@ -11,10 +11,7 @@ useHead({
       property: "og:site_name",
       content: "Web Developer Portfolio | Skills",
     },
-    {
-      property: "og:site",
-      content: "https://www.eazypau.com/skills",
-    },
+   
   ],
 });
 </script>

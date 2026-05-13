@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /mailto:poyizhi@gmail.com
-Disallow: /resume/my-resume.pdf
+Disallow: /resume/Melad_Adera_modern-professional.pdf
 
-Sitemap: http://www.eazypau.com/sitemap.xml
+Sitemap: https://www.meladadera.com/sitemap.xml

@@ -1,10 +1,6 @@
-<div>
-    <img src="https://www.eazypau.com/favicon-bw.png" alt="favicon" width="100"/>
-</div>
+# Melad Adera — portfolio
 
-# Personal Portfolio Website
-
-A personal porfolio website built with Nuxt3 and tailwindCSS
+Personal portfolio site built with Nuxt 3 and Tailwind CSS.
 
 ## Technologies used
 

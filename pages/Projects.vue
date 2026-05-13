@@ -14,7 +14,7 @@ useHead({
     },
     {
       property: "og:site",
-      content: "https://www.eazypau.com/projects",
+      content: "https://www.meladadera.com/projects",
     },
   ],
 });

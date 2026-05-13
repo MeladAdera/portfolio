@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
-      title: "Web Developer Portfolio | Po Yi Zhi",
+      title: "Melad Adera | Full Stack Developer",
       meta: [
         {
           name: "viewport",
@@ -16,45 +16,38 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "Personal Portfolio Website. Hi, I am Po Yi Zhi. I'm a Front-End Web Developer based in Kuala Lumpur, Malaysia. Currently focused on developing website using Vue and React. Checkout my projects and github repositories",
+            "Portfolio of Melad Adera, full stack developer. React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL. Freelance and product work including SportBooker.",
         },
         { name: "format-detection", content: "telephone=no" },
-        { property: "author", content: "Po Yi Zhi" },
+        { property: "author", content: "Melad Adera" },
         {
           name: "keywords",
           content:
-            "Web Developer, Front End Developer, Frontend Developer, Junior Web Developer, Software Developer, Software Engineer, Po Yi Zhi, Yi Zhi, eazypau, Malaysia",
+            "Melad Adera, Full Stack Developer, Web Developer, React, Next.js, TypeScript, NestJS, PostgreSQL, Dubai, Freelance",
         },
-        // social meta tags
         {
           property: "og:site_name",
-          content: "Web Developer Portfolio | Po Yi Zhi",
+          content: "Melad Adera | Portfolio",
         },
         {
           property: "og:site",
-          content: "https://www.eazypau.com/",
+          content: "https://www.meladadera.com/",
         },
         {
           property: "og:title",
-          content: "Web Developer Portfolio | Po Yi Zhi",
+          content: "Melad Adera | Full Stack Developer",
         },
         {
           property: "og:description",
           content:
-            "Personal Portfolio Website. Hi, I am Po Yi Zhi. I'm a Front-End Web Developer based in Kuala Lumpur, Malaysia. Currently focused on developing website using Vue and React. Checkout my projects and github repositories",
+            "Portfolio of Melad Adera, full stack developer. React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.",
         },
-        // sharing thumbmail img
         {
           property: "og:image",
-          content: "https://www.eazypau.com/favicon-bw.png", ///favicon-wb.png
-        },
-        // google site verification
-        {
-          name: "google-site-verification",
-          content: "CpKqeACrIS7JLwdilAnMgoDicJnoBaNmupPoq6fUtFs",
+          content: "https://www.meladadera.com/profile-pics/profile.jpeg",
         },
       ],
-      link: [{ rel: "icon", href: "/favicon-bw.png" }],
+      link: [{ rel: "icon", href: "/brand/favicon-ma.svg", type: "image/svg+xml" }],
     },
   },
   modules: ["@nuxtjs/tailwindcss"],

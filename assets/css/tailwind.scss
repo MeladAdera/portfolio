@@ -448,21 +448,21 @@ section.contact-section {
     }
 
     div:last-child {
-      @apply md:space-x-3 space-y-3 md:space-y-0 flex flex-col md:flex-row justify-center lg:justify-start;
+      @apply flex flex-col md:flex-row flex-wrap gap-3 justify-center lg:justify-start;
 
       a {
-        @apply inline-flex items-center justify-center h-12 px-6 text-lg text-white font-medium bg-gradient-to-r transition duration-200 rounded shadow-md hover:shadow-gray-400;
+        @apply inline-flex items-center justify-center h-12 px-6 text-lg text-white font-medium bg-gradient-to-r transition duration-200 rounded shadow-md hover:shadow-gray-400 from-gray-600 to-gray-900 hover:from-gray-600 hover:to-gray-600;
 
         svg {
           @apply w-5 h-5 mr-2;
         }
       }
 
-      a:first-child {
-        @apply from-gray-600 to-gray-900 hover:from-gray-600 hover:to-gray-600;
+      a.linkedin-cta {
+        @apply from-sky-700 to-sky-900 hover:from-sky-600 hover:to-sky-700;
       }
 
-      a:last-child {
+      a.resume-cta {
         @apply from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-600;
       }
     }
@@ -485,13 +485,9 @@ section.contact-section {
   .social-icons-and-navigation {
     @apply flex flex-col items-center border-t pt-3 lg:pt-6 xl:pt-4 2xl:pt-6;
 
-    nav {
+    nav.footer-social {
       @include header-font;
-      @apply flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 md:gap-6 mb-4;
-    }
-
-    div {
-      @apply flex gap-4;
+      @apply flex flex-wrap items-center justify-center gap-5 sm:gap-6;
     }
   }
 }
@@ -501,7 +497,7 @@ section.contact-section {
 }
 
 .footerIcon {
-  @apply text-gray-500 hover:text-gray-500 dark:text-white dark:hover:text-gray-200 active:text-gray-600 transition duration-100;
+  @apply inline-flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition duration-150;
 
   svg {
     @apply w-6 h-6;
@@ -552,9 +548,4 @@ section.contact-section {
       }
     }
   }
-}
-
-.smth-fun {
-  @include sub-font-family;
-  @apply text-center pt-3 pb-1 tracking-wider dark:text-white;
 }

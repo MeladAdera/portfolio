@@ -15,34 +15,56 @@
         <!-- nav - end -->
 
         <!-- social - start -->
-        <div>
-          <a href="https://www.instagram.com/yzpo/" aria-label="Instagram" target="_blank" class="footerIcon">
+        <nav class="footer-social" aria-label="Social links">
+          <a
+            href="https://www.instagram.com/melad.adera/"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footerIcon"
+          >
             <IconsInstaIcon />
           </a>
 
-          <a href="https://www.facebook.com/yizhipo" aria-label="Facebook" target="_blank" class="footerIcon">
+          <a
+            href="https://www.facebook.com/melad.adera"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footerIcon"
+          >
             <IconsFacebookIcon />
           </a>
 
-          <a href="https://www.linkedin.com/in/yzpo/" aria-label="Linkden" target="_blank" class="footerIcon">
+          <a
+            href="https://www.linkedin.com/in/melad-adera-97105a371/"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footerIcon"
+          >
             <IconsLinkedInIcon />
           </a>
 
-          <a href="https://github.com/eazypau" aria-label="Github" target="_blank" class="footerIcon">
+          <a
+            href="https://github.com/MeladAdera"
+            aria-label="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footerIcon"
+          >
             <IconsGithubIcon />
           </a>
-        </div>
+        </nav>
         <!-- social - end -->
       </div>
 
-      <div class="copyright">
-        © {{ CURRENT_YEAR }} - Present Po Yi Zhi. All rights reserved.
+      <div class="copyright" role="contentinfo">
+        © {{ CURRENT_YEAR }} Melad Adera. All rights reserved.
       </div>
     </footer>
   </div>
 </template>
 <script setup>
-// utils and hooks
-const { navigation } = useConstants();
 const CURRENT_YEAR = new Date().getFullYear();
 </script>

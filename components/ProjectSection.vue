@@ -1,10 +1,10 @@
 <template>
   <section class="project-section">
-    <h2 class="project-title">My Personal Projects</h2>
+    <h2 class="project-title">Featured project</h2>
     <div class="project-grid">
       <CardsNewProject
         v-for="project in projects"
-        :key="project"
+        :key="project.title"
         :project-details="project"
         :is-reverse="project.isReverse"
       />

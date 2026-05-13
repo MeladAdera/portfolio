@@ -2,9 +2,9 @@
   <nav id="nav-bar" class="navPadding" :class="navBgTextColor" style="height: 70px">
     <div class="lg:w-1/12">
       <Transition appear name="fadeIn">
-        <NuxtLink v-if="!loading" href="/" class="home-button" aria-label="YZ.">
-          <img :src="logo" width="40" height="40" alt="favicon" loading="lazy" />
-          <p>YZ.</p>
+        <NuxtLink v-if="!loading" href="/" class="home-button" aria-label="Melad Adera — home">
+          <img :src="logo" width="40" height="40" alt="" loading="lazy" />
+          <p>MA.</p>
         </NuxtLink>
       </Transition>
     </div>
@@ -53,8 +53,8 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { Bars3Icon, MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
 import { gsap } from "gsap";
-import blackWhiteFavicon from "/favicon-bw.png";
-import whiteBlackFavicon from "/favicon-wb.png";
+const logoLightTheme = "/brand/nav-ma-default.svg";
+const logoDarkTheme = "/brand/nav-ma-alt.svg";
 
 useHead({
   script: [
@@ -80,7 +80,7 @@ let loading = ref(transitionCompletedOnce.value ? false : true);
 // const heightOfNav = ref(0);
 // const currentScreenWidth = ref(0);
 const navBgTextColor = ref("bg-black text-white");
-const logo = ref(whiteBlackFavicon);
+const logo = ref(logoLightTheme);
 
 // const trackScroll = () => {
 //   trackNavBarPosition("nav-bar");
@@ -138,10 +138,10 @@ watchEffect(() => {
   //   }
   // } else {
   navBgTextColor.value = "bg-white text-black dark:bg-[#121212]";
-  logo.value = blackWhiteFavicon;
+  logo.value = logoLightTheme;
   // }
   if (enabled.value) {
-    logo.value = whiteBlackFavicon;
+    logo.value = logoDarkTheme;
   }
 });
 onMounted(() => {

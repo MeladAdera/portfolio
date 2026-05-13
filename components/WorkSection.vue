@@ -1,10 +1,10 @@
 <template>
   <section id="works">
-    <h2 class="workTitle">Career Highlights</h2>
+    <h2 class="workTitle">Freelance &amp; client work</h2>
     <div class="work-card-lane">
       <CardsWorkCard
         v-for="project in workingProjects"
-        :key="project.imgSrc"
+        :key="project.heading"
         :image="project.image"
         :on-click-function="onClickFunction"
         :content="project"

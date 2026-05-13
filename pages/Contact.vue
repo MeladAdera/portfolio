@@ -12,7 +12,7 @@ useHead({
     },
     {
       property: "og:site",
-      content: "https://www.eazypau.com/contact",
+      content: "https://www.meladadera.com/contact",
     },
   ],
 });
