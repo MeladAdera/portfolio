@@ -236,7 +236,7 @@ export function useConstants() {
     },
     {
       title: "Listening to music",
-      text: "Recent favourites: MWAM, HONNE, Forester, Milet and Yoasobi",
+      text: "Recent favourites: passnger-let her go, İbrahim Tatlıses - Bir Kulunu Çok Sevdim-Yıkılmışım Ben-Acı Gerçekler",
       classBg: "bg-music",
     },
   ];
