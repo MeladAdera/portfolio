@@ -54,7 +54,7 @@
             </a>
             <a
               v-if="isSeeking"
-              href="/resume/Melad_Adera_modern-professional.pdf"
+              href="/resume/Melad_Adera_modern-professional_NestCV_Resume.pdf"
               download="Melad-Adera-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
