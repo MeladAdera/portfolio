@@ -243,12 +243,12 @@ export function useConstants() {
   const projects = [
     {
       isReverse: true,
-      title: "SportBooker · Quick Kick",
+      title: "SportBooker · Syria Sport",
       titleColor: "text-white",
       filterColor: "bg-slate-900 bg-opacity-60",
       imageUrl: "/project-ss/sportbooker-fe.svg",
       description:
-        "Multi-tenant sports booking platform (Dubai / Quick Kick): live product with React, Vite, and TypeScript on the frontend; NestJS and PostgreSQL on the backend. Players, operators, and admins, tenant subdomains, RBAC, bookings and schedules, English and Arabic i18n.",
+        "Multi-tenant sports booking platform for the Syrian community: live product with React, Vite, and TypeScript on the frontend; NestJS and PostgreSQL on the backend. Players, operators, and admins, tenant subdomains, RBAC, bookings and schedules, English and Arabic i18n.",
       techStack: [
         "React",
         "Vite",
@@ -259,16 +259,16 @@ export function useConstants() {
         "i18n",
       ],
       isUrl: true,
-      urlLink: "https://quick-kick.sportbooker.net/",
-      githubLink: "https://github.com/Yazan-Ali-01/SportBooker-FE",
-      githubLinkBackend: "https://github.com/Yazan-Ali-01/SportBooker-BE",
+      urlLink: "https://syria-sport.sportbooker.net/",
+      githubLink: "https://github.com/MeladAdera/SportBooker-frontend",
+      githubLinkBackend: "https://github.com/MeladAdera/SportBooker-backend",
     },
   ];
   const workingProjects = [
     {
       image: {
         src: "/career-logos/sportbooker.svg",
-        alt: "SportBooker · Quick Kick",
+        alt: "SportBooker · Syria Sport",
         width: "100",
         height: "100",
         maxWidth: "max-w-[35%] md:max-w-[30%] 3xl:max-w-[35%]",
@@ -282,9 +282,9 @@ export function useConstants() {
           height: "261",
         },
       ],
-      heading: "Quick Kick (Dubai) — SportBooker",
+      heading: "Syria Sport — SportBooker",
       description:
-        "Freelance / contract full-stack work on a multi-tenant sports booking platform for Quick Kick in Dubai: React and Vite frontend for players, operators, and admins; NestJS and PostgreSQL on the API side; RBAC, tenant subdomains, bookings and schedules, and English/Arabic i18n.",
+        "Freelance / contract full-stack work on a multi-tenant sports booking platform for the Syrian community: React and Vite frontend for players, operators, and admins; NestJS and PostgreSQL on the API side; RBAC, tenant subdomains, bookings and schedules, and English/Arabic i18n.",
       teamMembers: [],
       techStack: [
         "React",
@@ -301,15 +301,15 @@ export function useConstants() {
       urls: [
         {
           name: "Live product",
-          link: "https://quick-kick.sportbooker.net/",
+          link: "https://syria-sport.sportbooker.net/",
         },
         {
           name: "Frontend repository",
-          link: "https://github.com/Yazan-Ali-01/SportBooker-FE",
+          link: "https://github.com/MeladAdera/SportBooker-frontend",
         },
         {
           name: "Backend repository",
-          link: "https://github.com/Yazan-Ali-01/SportBooker-BE",
+          link: "https://github.com/MeladAdera/SportBooker-backend",
         },
       ],
     },
@@ -355,10 +355,10 @@ export function useConstants() {
     {
       logo: "/career-logos/sportbooker.svg",
       logoBorderColor: "#0d9488",
-      companyName: "SportBooker Platform — Full Stack Developer (Quick Kick, Dubai)",
+      companyName: "SportBooker Platform — Full Stack Developer (Syrian community)",
       duration: "2025 – Present",
       jobScope: [
-        "Worked on a multi-tenant sports booking platform built with React, Vite, TypeScript, NestJS, and PostgreSQL, in use in Dubai through Quick Kick Sportbooker.",
+        "Worked on a multi-tenant sports booking platform built with React, Vite, TypeScript, NestJS, and PostgreSQL, serving the Syrian community through Syria Sport on SportBooker.",
         "Built frontend features for players, operators, and admin users with responsive, user-friendly interfaces.",
         "Implemented role-based access control and tenant-based routing using subdomains for different organizations.",
         "Integrated APIs for authentication, bookings, schedules, and user management.",
