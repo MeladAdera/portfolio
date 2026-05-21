@@ -1,6 +1,6 @@
 <template>
   <section class="project-section">
-    <h2 class="project-title">Featured project</h2>
+    <h2 class="project-title">Featured projects</h2>
     <div class="project-grid">
       <CardsNewProject
         v-for="project in projects"

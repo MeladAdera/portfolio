@@ -241,6 +241,7 @@ export function useConstants() {
     },
   ];
   const projects = [
+    
     {
       isReverse: true,
       title: "SportBooker · Syria Sport",
@@ -262,6 +263,27 @@ export function useConstants() {
       urlLink: "https://syria-sport.sportbooker.net/",
       githubLink: "https://github.com/MeladAdera/SportBooker-frontend",
       githubLinkBackend: "https://github.com/MeladAdera/SportBooker-backend",
+    },
+    {
+      isReverse: false,
+      title: "Shopverse",
+      titleColor: "text-white",
+      filterColor: "bg-indigo-900 bg-opacity-60",
+      imageUrl: "/project-ss/shopverse-fe.svg",
+      description:
+        "Full-featured e-commerce storefront and admin dashboard: React, TypeScript, and Vite on the frontend; Express and PostgreSQL on the backend. Product catalog with filters, cart and checkout, customer auth and order history, admin CRUD for products and users, and optional demo mode for previews without a live API.",
+      techStack: [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Express",
+        "PostgreSQL",
+        "TanStack Query",
+      ],
+      isUrl: true,
+      urlLink: "https://shopverse-front-end.vercel.app/",
+      githubLink: "https://github.com/MeladAdera/shopverse--front-end",
+      githubLinkBackend: "https://github.com/MeladAdera/shopverse-backend",
     },
   ];
   const workingProjects = [
@@ -313,50 +335,14 @@ export function useConstants() {
         },
       ],
     },
-    {
-      image: {
-        src: "/career-logos/freelance.svg",
-        alt: "Freelance full-stack",
-        width: "100",
-        height: "100",
-        maxWidth: "max-w-[35%] md:max-w-[30%] 3xl:max-w-[35%]",
-      },
-      imageShowcase: [],
-      heading: "Independent freelance — full-stack",
-      description:
-        "I work directly with clients and teams on web products end to end: responsive frontends (React, Next.js, Vite, TypeScript), REST APIs and services (Node.js, NestJS, Express), PostgreSQL and MongoDB, auth (JWT, RBAC), and clear communication with maintainable, iterative delivery.",
-      teamMembers: [],
-      techStack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "NestJS",
-        "Express",
-        "PostgreSQL",
-        "MongoDB",
-      ],
-      highlights:
-        "E-commerce, marketplaces, job boards, task tools, APIs, and product iterations for startups and small businesses",
-      urls: [
-        {
-          name: "GitHub",
-          link: "https://github.com/MeladAdera",
-        },
-        {
-          name: "Contact",
-          link: "/contact",
-        },
-      ],
-    },
   ];
- 
+
   const timeline = [
     {
       logo: "/career-logos/sportbooker.svg",
       logoBorderColor: "#0d9488",
       companyName: "SportBooker Platform — Full Stack Developer (Syrian community)",
-      duration: "2025 – Present",
+      duration: "2026 – Present",
       jobScope: [
         "Worked on a multi-tenant sports booking platform built with React, Vite, TypeScript, NestJS, and PostgreSQL, serving the Syrian community through Syria Sport on SportBooker.",
         "Built frontend features for players, operators, and admin users with responsive, user-friendly interfaces.",
@@ -365,6 +351,21 @@ export function useConstants() {
         "Used Zustand for state management and built reusable components to improve scalability and maintainability.",
         "Contributed to backend APIs with NestJS and PostgreSQL, including migrations, seed data, and authentication flows.",
         "Implemented multilingual support (English and Arabic) and contributed to performance improvements and bug fixes.",
+      ],
+    },
+    {
+      logo: "/career-logos/khamsat.svg",
+      logoBorderColor: "#047857",
+      companyName: "Freelance Full Stack Developer — Khamsat",
+      duration: "Jan 2025 – Dec 2025",
+      jobScope: [
+        "Worked on client web applications and custom software solutions using React, TypeScript, Node.js, and modern JavaScript technologies.",
+        "Refactored dirty and AI-generated code into clean, maintainable, and scalable solutions.",
+        "Developed responsive UI interfaces with reusable components and organized CSS architecture.",
+        "Converted Figma designs into modern, mobile-friendly frontend pages.",
+        "Integrated REST APIs for authentication, dashboards, and dynamic user data.",
+        "Fixed frontend, backend, and database-related issues to improve application stability and reliability.",
+        "Improved application performance by optimizing database queries, reducing unnecessary renders, and cleaning inefficient code.",
       ],
     },
   ];

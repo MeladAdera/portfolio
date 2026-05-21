@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /resume/Melad_Adera_modern-professional.pdf
+Disallow: /resume/Melad_Adera.pdf
 
 Sitemap: https://www.meladadera.com/sitemap.xml
