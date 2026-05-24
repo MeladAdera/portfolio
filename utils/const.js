@@ -370,6 +370,13 @@ export function useConstants() {
     },
   ];
 
+  const education = [
+    {
+      school: "Tishreen University",
+      degree: "Computer and Control Engineering",
+    },
+  ];
+
   return {
     navigation,
     hobbies,
@@ -377,5 +384,6 @@ export function useConstants() {
     projects,
     workingProjects,
     timeline,
+    education,
   };
 }

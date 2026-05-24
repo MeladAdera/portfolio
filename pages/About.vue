@@ -1,6 +1,6 @@
 <script setup>
 //const
-const { hobbies, timeline } = useConstants();
+const { hobbies, timeline, education } = useConstants();
 useHead({
   meta: [
     {
@@ -45,6 +45,16 @@ useHead({
               <li>shadcn/ui</li>
               <li>jQuery</li>
             </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="mt-4">
+            <div v-for="edu in education" :key="edu.school" class="mb-3">
+              <p class="text-gray-100 font-semibold">{{ edu.school }}</p>
+              <p class="text-gray-400">{{ edu.degree }}</p>
+            </div>
           </div>
         </section>
 
