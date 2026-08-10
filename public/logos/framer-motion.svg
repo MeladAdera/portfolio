@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Framer Motion">
+  <rect width="100" height="100" rx="18" fill="#0b1120"/>
+  <path d="M26 18h48L50 42H26z" fill="#00b0ff"/>
+  <path d="M26 42h48L50 66H26z" fill="#0055ff"/>
+  <path d="M26 66h24v24z" fill="#7c3aed"/>
+</svg>

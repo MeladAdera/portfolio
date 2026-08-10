@@ -19,7 +19,7 @@ useHead({
         <section>
           <h2>About</h2>
           <p class="mt-4 text-gray-300 leading-8">
-  I'm a Full Stack Developer with 1.5+ years of experience building
+  I'm a Full Stack Developer with 2+ years of experience building
   scalable and modern web applications using React, Next.js,
   TypeScript, Node.js, NestJS, and PostgreSQL.
 </p>

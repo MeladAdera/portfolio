@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 535 261" role="img" aria-label="Inventory Distribution System frontend">
+  <defs>
+    <linearGradient id="ids" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3730a3"/>
+      <stop offset="100%" style="stop-color:#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="535" height="261" fill="url(#ids)"/>
+  <text x="267" y="112" text-anchor="middle" fill="#eef2ff" font-family="system-ui,sans-serif" font-size="30" font-weight="700">Inventory Distribution</text>
+  <text x="267" y="150" text-anchor="middle" fill="#c7d2fe" font-family="system-ui,sans-serif" font-size="18" font-weight="500">Next.js · NestJS · PostgreSQL · Offline PWA</text>
+</svg>

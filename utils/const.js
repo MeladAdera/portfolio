@@ -76,6 +76,27 @@ export function useConstants() {
       height: 150,
     },
     {
+      imgUrl: "/logos/shadcn-ui.svg",
+      name: "Shadcn/UI",
+      alt: "Shadcn UI logo",
+      width: 150,
+      height: 150,
+    },
+    {
+      imgUrl: "/logos/material-ui.svg",
+      name: "Material-UI",
+      alt: "Material UI logo",
+      width: 150,
+      height: 150,
+    },
+    {
+      imgUrl: "/logos/framer-motion.svg",
+      name: "Framer Motion",
+      alt: "Framer Motion logo",
+      width: 150,
+      height: 150,
+    },
+    {
       imgUrl: "/logos/html5-original.svg",
       name: "HTML",
       alt: "HTML logo",
@@ -167,9 +188,23 @@ export function useConstants() {
       height: 150,
     },
     {
+      imgUrl: "/logos/mysql.svg",
+      name: "MySQL",
+      alt: "MySQL logo",
+      width: 150,
+      height: 150,
+    },
+    {
       imgUrl: "/logos/mongodb.svg",
       name: "MongoDB",
       alt: "MongoDB logo",
+      width: 150,
+      height: 150,
+    },
+    {
+      imgUrl: "/logos/redis.svg",
+      name: "Redis",
+      alt: "Redis logo",
       width: 150,
       height: 150,
     },
@@ -197,6 +232,20 @@ export function useConstants() {
         "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-100 rounded-lg",
       name: "Multer",
       alt: "Multer",
+      width: 150,
+      height: 150,
+    },
+    {
+      imgUrl: "/logos/jest.svg",
+      name: "Jest",
+      alt: "Jest logo",
+      width: 150,
+      height: 150,
+    },
+    {
+      imgUrl: "/logos/cypress.svg",
+      name: "Cypress",
+      alt: "Cypress logo",
       width: 150,
       height: 150,
     },
@@ -241,7 +290,26 @@ export function useConstants() {
     },
   ];
   const projects = [
-    
+    {
+      isReverse: false,
+      title: "Inventory Distribution System",
+      titleColor: "text-white",
+      filterColor: "bg-indigo-950 bg-opacity-60",
+      imageUrl: "/project-ss/inventory-fe.svg",
+      description:
+        "Multi-tenant inventory distribution platform linking a central warehouse to multiple retail shops: Next.js and TypeScript on the frontend, NestJS and PostgreSQL on the backend. Warehouse distribution workflows, customer credit with FIFO payment allocation and immutable ledgers, weighted-average inventory costing, analytics dashboards, and an offline-first PWA built on IndexedDB with queued sync and conflict resolution.",
+      techStack: [
+        "Next.js",
+        "TypeScript",
+        "TanStack Query",
+        "NestJS",
+        "PostgreSQL",
+        "IndexedDB",
+        "Docker",
+      ],
+      isUrl: true,
+      urlLink: "https://inventory-distribution-system-fe-one.vercel.app",
+    },
     {
       isReverse: true,
       title: "SportBooker · Syria Sport",
@@ -287,6 +355,48 @@ export function useConstants() {
     },
   ];
   const workingProjects = [
+    {
+      image: {
+        src: "/career-logos/inventory.svg",
+        alt: "Inventory Distribution System",
+        width: "100",
+        height: "100",
+        maxWidth: "max-w-[35%] md:max-w-[30%] 3xl:max-w-[35%]",
+      },
+      imageShowcase: [
+        {
+          title: "Inventory Distribution System",
+          src: "/project-ss/inventory-fe.svg",
+          alt: "Inventory Distribution System frontend preview",
+          width: "535",
+          height: "261",
+        },
+      ],
+      heading: "Inventory Distribution System",
+      description:
+        "Full-stack work on a multi-tenant inventory distribution platform connecting a central warehouse with multiple retail shops: Next.js and TypeScript on the frontend, NestJS and PostgreSQL on the API side. Covers warehouse distribution workflows, sales, customer credit, and business analytics for warehouse administrators, shop owners, and employees.",
+      teamMembers: [],
+      techStack: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "TanStack Query",
+        "Zustand",
+        "NestJS",
+        "PostgreSQL",
+        "IndexedDB",
+        "Docker",
+      ],
+      highlights:
+        "Offline-first PWA with queued sync and conflict resolution, FIFO credit allocation with immutable ledgers, weighted-average inventory costing",
+      urls: [
+        {
+          name: "Live product",
+          link: "https://inventory-distribution-system-fe-one.vercel.app",
+        },
+      ],
+    },
     {
       image: {
         src: "/career-logos/sportbooker.svg",
@@ -339,10 +449,26 @@ export function useConstants() {
 
   const timeline = [
     {
+      logo: "/career-logos/inventory.svg",
+      logoBorderColor: "#6366f1",
+      companyName:
+        "Inventory Distribution System — Full Stack Developer",
+      duration: "May 2026 – Present",
+      jobScope: [
+        "Building a multi-tenant inventory distribution platform that connects a central warehouse with multiple retail shops, covering inventory management, distribution, sales, customer credit, and business analytics.",
+        "Architected the multi-tenant model for warehouse administrators, shop owners, and employees while keeping inventory, ordering, and reporting centralized across shops.",
+        "Engineered end-to-end distribution workflows: order creation, approval, shipment, receipt, inventory synchronization, and stock movement with transactional consistency.",
+        "Implemented customer credit management with partial payments, debt tracking, FIFO payment allocation, aging reports, and immutable financial ledgers.",
+        "Built an offline-first PWA using IndexedDB, queued synchronization, and conflict resolution so sales and inventory keep working on unreliable networks.",
+        "Implemented inventory costing with weighted-average calculations and immutable transaction snapshots, keeping historical sales and profit reports accurate after price changes.",
+        "Developed role-based authorization, multilingual support, analytics dashboards, and audit logging, and optimized backend services for security, traceability, and performance.",
+      ],
+    },
+    {
       logo: "/career-logos/sportbooker.svg",
       logoBorderColor: "#0d9488",
       companyName: "SportBooker Platform — Full Stack Developer (Syrian community)",
-      duration: "2026 – Present",
+      duration: "Jan 2026 – Apr 2026",
       jobScope: [
         "Worked on a multi-tenant sports booking platform built with React, Vite, TypeScript, NestJS, and PostgreSQL, serving the Syrian community through Syria Sport on SportBooker.",
         "Built frontend features for players, operators, and admin users with responsive, user-friendly interfaces.",
