@@ -118,15 +118,18 @@ const props = defineProps({
       <div class="intro">
         <h2>Experience</h2>
         <p>Product and client work since 2025, mostly full stack.</p>
-        <NuxtLink href="/about#experience" class="text-link"
-          >Full timeline →</NuxtLink
-        >
       </div>
       <ol>
         <li v-for="career in timeline" :key="career.company">
           <div>
             <h3>{{ career.role }} · {{ career.company }}</h3>
             <p>{{ career.summary }}</p>
+            <NuxtLink
+              v-if="career.project"
+              :href="`/projects/${career.project}`"
+              class="text-link"
+              >Case study →</NuxtLink
+            >
           </div>
           <span class="duration">{{ career.duration }}</span>
         </li>

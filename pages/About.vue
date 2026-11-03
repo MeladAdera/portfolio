@@ -1,22 +1,83 @@
 <script setup>
-import { ArrowDownTrayIcon } from "@heroicons/vue/24/outline";
+import {
+  ArrowDownTrayIcon,
+  ServerStackIcon,
+  WindowIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/vue/24/outline";
 
-const { timeline, skills, education, interests } = useConstants();
+// keys used by `skills[].icon` in const.js
+const skillIcons = {
+  frontend: WindowIcon,
+  backend: ServerStackIcon,
+  tools: WrenchScrewdriverIcon,
+};
 
-const principles = [
-  {
-    title: "I own the whole feature",
-    text: "On SportBooker and the inventory platform I've written the migration, the API and the screen for the same feature, so nothing gets lost between layers.",
-  },
-  {
-    title: "I plan for bad networks",
-    text: "Shops can't stop selling when the connection drops, so the inventory app queues changes offline and syncs them when it's back.",
-  },
-  {
-    title: "I leave code cleaner",
-    text: "Much of my freelance work was turning messy and AI-generated code into something the next developer can maintain.",
-  },
-];
+const {
+  layers,
+  intro,
+  facts,
+  collaboration,
+  principles,
+  dataPoints,
+  education,
+  journey,
+  values,
+  interests,
+  skills,
+} = useConstants();
+
+const pad = (n) => String(n).padStart(2, "0");
+const sections = [];
+const setSection = (i) => (el) => {
+  if (el) sections[i] = el;
+};
+const active = ref(0);
+// the last layer is a dark band, so the stack and the bar switch to dark plates there
+const deep = computed(() => active.value === layers.length - 1);
+
+const story = ref(null);
+
+// the active layer is the last section whose top has passed a line 40% down the
+// screen; above the first section it stays on layer 01. The same pass records how far
+// through the story the reader is (0 to 1), which tilts the phone background stack.
+let frame = 0;
+function updateActive() {
+  cancelAnimationFrame(frame);
+  frame = requestAnimationFrame(() => {
+    const line = window.innerHeight * 0.4;
+    let current = 0;
+    sections.forEach((el, i) => {
+      if (el.getBoundingClientRect().top <= line) current = i;
+    });
+    active.value = current;
+
+    const el = story.value;
+    if (!el) return;
+    const travel = el.offsetHeight - window.innerHeight;
+    const progress = travel > 0 ? -el.getBoundingClientRect().top / travel : 0;
+    el.style.setProperty(
+      "--story-progress",
+      Math.min(1, Math.max(0, progress)).toFixed(3),
+    );
+  });
+}
+onMounted(() => {
+  window.addEventListener("scroll", updateActive, { passive: true });
+  window.addEventListener("resize", updateActive);
+  updateActive();
+});
+onBeforeUnmount(() => {
+  cancelAnimationFrame(frame);
+  window.removeEventListener("scroll", updateActive);
+  window.removeEventListener("resize", updateActive);
+});
+
+function goTo(i) {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // "auto" would pick up the page-wide scroll-behavior: smooth, so ask for instant
+  sections[i]?.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
+}
 
 useHead({
   title: "About | Melad Adera",
@@ -34,128 +95,196 @@ useHead({
 </script>
 <template>
   <NuxtLayout name="default">
-    <div class="page about-page">
-      <!-- story -->
-      <section class="page-container about-hero">
-        <div class="about-text">
-          <p class="eyebrow">About me</p>
-          <h1>I like owning a feature from the database to the screen.</h1>
-          <p class="lead">
-            I'm Melad, a full stack developer. I studied Computer and Control
-            Engineering at Tishreen University and started freelancing on
-            Khamsat in January 2025, building client apps and cleaning up
-            codebases.
-          </p>
-          <p class="lead">
-            Since 2026 I've worked on products: first SportBooker, a booking
-            platform for the Syrian community, and now an inventory system that
-            links a warehouse with its shops.
-          </p>
-          <div class="about-actions">
+    <div class="page about-page" :class="{ 'is-deep': deep }">
+      <div class="page-container about-layout">
+        <!-- left: the story, five chapters in normal reading order -->
+        <div ref="story" class="about-story">
+          <!-- phones and tablets: a sticky bar for navigation, and the stack as a faint
+               sticky background that the story scrolls over -->
+          <AboutLayerBar :layers="layers" :active="active" @select="goTo" />
+          <div class="stack-mobile">
+            <AboutLayerStack :layers="layers" :active="active" decorative />
+          </div>
+
+          <!-- 01 Interface -->
+          <section
+            :id="layers[0].anchor"
+            :ref="setSection(0)"
+            class="layer-section layer-interface"
+            :aria-labelledby="`${layers[0].anchor}-title`"
+          >
+            <AboutLayerHead
+              :layer="layers[0]"
+              :index="0"
+              :total="layers.length"
+              level="h1"
+            />
+            <p class="story-name">
+              {{ intro.name }}<span>{{ intro.role }}</span>
+            </p>
+            <p v-for="text in intro.paragraphs" :key="text" class="story-text">
+              {{ text }}
+            </p>
             <a
               href="/resume/Melad_Adera.pdf"
               download="Melad-Adera-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-secondary"
+              class="btn-secondary story-action"
             >
               <ArrowDownTrayIcon /> Download resume
             </a>
-            <div class="social-links">
-              <a
-                href="https://github.com/MeladAdera"
-                target="_blank"
-                rel="noopener noreferrer"
-                >GitHub ↗</a
-              >
-              <a
-                href="https://www.linkedin.com/in/melad-adera-97105a371/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >LinkedIn ↗</a
-              >
+          </section>
+
+          <!-- 02 API -->
+          <section
+            :id="layers[1].anchor"
+            :ref="setSection(1)"
+            class="layer-section layer-api"
+            :aria-labelledby="`${layers[1].anchor}-title`"
+          >
+            <AboutLayerHead
+              :layer="layers[1]"
+              :index="1"
+              :total="layers.length"
+            />
+            <dl class="story-facts">
+              <div v-for="fact in facts" :key="fact.label">
+                <dt>{{ fact.label }}</dt>
+                <dd>{{ fact.text }}</dd>
+              </div>
+            </dl>
+            <h3 class="story-subhead">How I communicate</h3>
+            <p v-for="text in collaboration" :key="text" class="story-text">
+              {{ text }}
+            </p>
+          </section>
+
+          <!-- 03 Logic -->
+          <section
+            :id="layers[2].anchor"
+            :ref="setSection(2)"
+            class="layer-section layer-logic"
+            :aria-labelledby="`${layers[2].anchor}-title`"
+          >
+            <AboutLayerHead
+              :layer="layers[2]"
+              :index="2"
+              :total="layers.length"
+            />
+            <div
+              v-for="(item, i) in principles"
+              :key="item.title"
+              class="story-point"
+            >
+              <h3 class="story-subhead">
+                <span class="point-num">{{ pad(i + 1) }}</span
+                >{{ item.title }}
+              </h3>
+              <p class="story-text">{{ item.text }}</p>
+              <p class="story-example"><b>In practice</b>{{ item.example }}</p>
             </div>
-          </div>
-        </div>
-        <img
-          src="/profile-pics/about.jpg"
-          width="800"
-          height="800"
-          alt="Melad Adera at a desk, with code on a monitor in the background"
-        />
-      </section>
+          </section>
 
-      <!-- how I work -->
-      <section class="how-i-work" aria-labelledby="how-i-work-title">
-        <div class="page-container">
-          <h2 id="how-i-work-title">How I work</h2>
-          <ol>
-            <li v-for="(item, i) in principles" :key="item.title">
-              <span class="num" aria-hidden="true">0{{ i + 1 }}</span>
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.text }}</p>
-            </li>
-          </ol>
-        </div>
-      </section>
+          <!-- 04 Data -->
+          <section
+            :id="layers[3].anchor"
+            :ref="setSection(3)"
+            class="layer-section layer-data"
+            :aria-labelledby="`${layers[3].anchor}-title`"
+          >
+            <AboutLayerHead
+              :layer="layers[3]"
+              :index="3"
+              :total="layers.length"
+            />
+            <div
+              v-for="(item, i) in dataPoints"
+              :key="item.title"
+              class="story-point"
+            >
+              <h3 class="story-subhead">
+                <span class="point-num">{{ pad(i + 1) }}</span
+                >{{ item.title }}
+              </h3>
+              <p class="story-text">{{ item.text }}</p>
+              <p class="story-example"><b>In practice</b>{{ item.example }}</p>
+            </div>
+            <div class="story-point">
+              <h3 class="story-subhead">Education</h3>
+              <p v-for="edu in education" :key="edu.school" class="story-text">
+                <strong>{{ edu.school }}</strong
+                >, {{ edu.degree }}.
+              </p>
+            </div>
+          </section>
 
-      <!-- experience -->
-      <section id="experience" class="page-container about-experience">
-        <div class="intro">
-          <h2>Experience</h2>
-          <p>Product and client work since 2025, mostly full stack.</p>
-        </div>
-        <ol>
-          <li v-for="career in timeline" :key="career.company">
-            <span class="duration">{{ career.duration }}</span>
-            <div class="entry">
-              <h3>{{ career.role }} · {{ career.company }}</h3>
-              <ul v-if="career.points">
-                <li v-for="point in career.points" :key="point">{{ point }}</li>
+          <!-- 05 Foundation -->
+          <section
+            :id="layers[4].anchor"
+            :ref="setSection(4)"
+            class="layer-section layer-foundation"
+            :aria-labelledby="`${layers[4].anchor}-title`"
+          >
+            <AboutLayerHead
+              :layer="layers[4]"
+              :index="4"
+              :total="layers.length"
+            />
+            <div class="story-point">
+              <h3 class="story-subhead">My journey</h3>
+              <ol class="journey">
+                <li v-for="(step, i) in journey" :key="step.title">
+                  <span class="journey-num" aria-hidden="true">{{
+                    i + 1
+                  }}</span>
+                  <div>
+                    <h4>{{ step.title }}</h4>
+                    <p>{{ step.text }}</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="story-point">
+              <h3 class="story-subhead">My values</h3>
+              <p class="story-text">{{ values }}</p>
+            </div>
+            <div class="story-point">
+              <h3 class="story-subhead">Beyond the screen</h3>
+              <ul class="story-inline">
+                <li v-for="interest in interests" :key="interest">
+                  {{ interest }}
+                </li>
               </ul>
-              <p v-else>{{ career.summary }}</p>
-              <NuxtLink
-                v-if="career.project"
-                :href="`/projects/${career.project}`"
-                class="text-link"
-                >Read the case study →</NuxtLink
-              >
             </div>
-          </li>
-        </ol>
-      </section>
+          </section>
+        </div>
 
-      <!-- skills -->
+        <!-- right: the 3D stack stays in view while the story scrolls -->
+        <aside class="stack-aside">
+          <div class="stack-sticky">
+            <AboutLayerStack :layers="layers" :active="active" @select="goTo" />
+          </div>
+        </aside>
+      </div>
+
+      <!-- skills, after the five layers -->
       <section id="skills" class="page-container about-skills">
         <h2>Skills</h2>
         <div class="skill-groups">
           <div v-for="group in skills" :key="group.name" class="skill-group">
-            <h3>{{ group.name }}</h3>
+            <div class="skill-head">
+              <span class="skill-icon" aria-hidden="true">
+                <component :is="skillIcons[group.icon]" />
+              </span>
+              <h3>{{ group.name }}</h3>
+            </div>
             <ul class="chips">
               <li v-for="skill in group.items" :key="skill">{{ skill }}</li>
             </ul>
           </div>
         </div>
       </section>
-
-      <!-- education and interests -->
-      <div class="page-container about-extras">
-        <section>
-          <h2>Education</h2>
-          <div v-for="edu in education" :key="edu.school" class="school">
-            <p>{{ edu.school }}</p>
-            <p>{{ edu.degree }}</p>
-          </div>
-        </section>
-        <section>
-          <h2>Outside work</h2>
-          <ul class="chips interests">
-            <li v-for="interest in interests" :key="interest">
-              {{ interest }}
-            </li>
-          </ul>
-        </section>
-      </div>
     </div>
   </NuxtLayout>
 </template>

@@ -1,5 +1,9 @@
 <template>
-  <section id="contact" class="page contact-band" aria-labelledby="contact-title">
+  <section
+    id="contact"
+    class="page contact-band"
+    aria-labelledby="contact-title"
+  >
     <div class="page-container">
       <div>
         <h2 id="contact-title">Have a role or a project in mind?</h2>

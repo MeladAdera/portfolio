@@ -47,7 +47,9 @@ export default defineNuxtConfig({
           content: "https://www.meladadera.com/profile-pics/home.jpg",
         },
       ],
-      link: [{ rel: "icon", href: "/brand/favicon-ma.svg", type: "image/svg+xml" }],
+      link: [
+        { rel: "icon", href: "/brand/favicon-ma.svg", type: "image/svg+xml" },
+      ],
     },
   },
   // old pages that were folded into others, kept so existing links still work

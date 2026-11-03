@@ -10,6 +10,10 @@ body {
 }
 html {
   scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 // Navigation Bar: three items fit on a 360px phone, so there's no drawer
@@ -362,6 +366,10 @@ nav#nav-bar {
       p {
         @apply mt-1.5 text-[15px] lg:text-base font-medium leading-relaxed text-gray-600 dark:text-gray-300;
       }
+
+      .text-link {
+        @apply inline-block mt-2 py-1 lg:py-0;
+      }
     }
 
     .duration {
@@ -537,122 +545,362 @@ nav#nav-bar {
   }
 }
 
-// about page
+// about page: "Melad, layer by layer". Five chapters of story text on the left, from
+// the surface (who I am) down to the foundation, and on desktop a sticky 3D stack on
+// the right that marks the chapter being read and jumps to any chapter. Below 1024px
+// the stack shows once at the top and a slim sticky bar takes over.
 .about-page {
-  section[id] {
-    @apply scroll-mt-20 lg:scroll-mt-24;
+  .about-layout {
+    @apply lg:grid lg:grid-cols-[minmax(0,1.38fr)_minmax(0,1fr)] lg:gap-16;
   }
 
-  .about-hero {
-    @apply flex flex-col-reverse lg:flex-row lg:items-center gap-6 lg:gap-16 pt-7 pb-10 lg:pt-[72px] lg:pb-16;
+  .about-story {
+    @apply min-w-0;
+  }
 
-    .about-text {
-      @apply flex-1 min-w-0 flex flex-col items-start gap-4 lg:gap-[22px];
+  // each chapter paints a full-width band that gets a little deeper
+  .layer-section {
+    --band: #f8f9fa;
+    @apply relative py-14 lg:py-24;
+    scroll-margin-top: 112px;
+    background: var(--band);
+    box-shadow: 0 0 0 100vmax var(--band);
+    // reach 1px above the section so no hairline shows between two bands
+    clip-path: inset(-1px -100vmax 0);
+
+    @media (min-width: 1024px) {
+      scroll-margin-top: 73px;
+    }
+  }
+
+  .layer-api {
+    --band: #f3f5f8;
+  }
+
+  .layer-logic {
+    --band: #eef1f5;
+  }
+
+  .layer-data {
+    --band: #e9edf3;
+  }
+
+  .layer-foundation {
+    --band: #0d1830;
+    @apply text-white;
+  }
+
+  // ---- chapter heading: label with a thin rule, title, one-line meaning ----
+  .layer-head {
+    @apply flex flex-col gap-3 lg:gap-4 mb-8 lg:mb-12;
+
+    h1,
+    h2 {
+      @apply text-[30px] lg:text-[44px] leading-[1.1];
+    }
+  }
+
+  .layer-label {
+    @include header-font;
+    @apply flex items-center gap-4 text-[11px] lg:text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400;
+
+    &::after {
+      content: "";
+      @apply flex-1 h-px bg-gray-200 dark:bg-gray-800;
     }
 
-    h1 {
-      @apply lg:text-[46px] leading-[1.12];
+    b {
+      @apply text-teal-700 dark:text-teal-300;
+    }
+  }
+
+  .layer-summary {
+    @apply max-w-[34em] text-[17px] lg:text-lg font-medium leading-relaxed text-gray-500 dark:text-gray-400;
+  }
+
+  // ---- story typography ----
+  .story-text {
+    @apply max-w-[36em] text-base lg:text-[17px] font-medium leading-[1.8] text-gray-600 dark:text-gray-300;
+
+    & + .story-text {
+      @apply mt-5;
     }
 
-    .lead {
-      @apply max-w-[36em];
+    strong {
+      @apply font-bold text-[#14213d] dark:text-white;
     }
+  }
 
-    img {
-      @apply w-full h-60 object-cover object-[50%_35%] rounded-[18px] bg-white lg:w-[340px] lg:h-auto lg:aspect-[4/5] lg:shrink-0 lg:rounded-3xl lg:ring-[10px] ring-teal-50 dark:ring-teal-900/40;
+  .story-name {
+    @include header-font;
+    @apply flex flex-col gap-1 mb-6 text-xl lg:text-2xl font-extrabold text-[#14213d] dark:text-white;
+
+    span {
+      @apply text-xs font-bold uppercase tracking-widest text-teal-700 dark:text-teal-300;
     }
+  }
 
-    .about-actions {
-      @apply w-full sm:w-auto flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 pt-1.5;
-    }
+  .story-action {
+    @apply mt-9;
+  }
 
-    .social-links {
+  .story-subhead {
+    @include header-font;
+    @apply flex items-baseline gap-3 mb-3 text-lg lg:text-xl font-bold leading-snug text-[#14213d] dark:text-white;
+  }
+
+  .point-num {
+    @apply text-[13px] font-extrabold tabular-nums text-teal-700 dark:text-teal-300;
+  }
+
+  .story-point + .story-point {
+    @apply mt-12 lg:mt-14;
+  }
+
+  .story-example {
+    @apply max-w-[36em] mt-4 pl-4 border-l-2 border-gray-300 dark:border-gray-700 text-[15px] font-medium leading-relaxed text-gray-500 dark:text-gray-400;
+
+    b {
       @include header-font;
-      @apply flex justify-center gap-7 sm:gap-6 text-sm font-semibold;
+      @apply mr-2 text-[11px] font-bold uppercase tracking-widest text-teal-700 dark:text-teal-300;
+    }
+  }
 
-      a {
-        @apply py-3 text-[#14213d] underline underline-offset-4 decoration-gray-300 hover:decoration-[#14213d] dark:text-white dark:decoration-gray-600 dark:hover:decoration-white;
+  // 02 API: small labels beside plain text
+  .story-facts {
+    @apply max-w-[36em] mb-12 flex flex-col gap-4;
+
+    > div {
+      @apply grid gap-1 sm:grid-cols-[9rem_1fr] sm:gap-6 sm:items-baseline;
+    }
+
+    dt {
+      @include header-font;
+      @apply text-[11px] lg:text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400;
+    }
+
+    dd {
+      @apply text-base lg:text-[17px] font-medium text-[#14213d] dark:text-white;
+    }
+  }
+
+  // ---- 05 Foundation: the dark navy band at the bottom of the stack ----
+  .layer-foundation {
+    .layer-label {
+      @apply text-gray-400;
+
+      &::after {
+        @apply bg-white/10;
+      }
+
+      b {
+        @apply text-teal-300;
       }
     }
-  }
 
-  .how-i-work {
-    @apply bg-white dark:bg-[#1c1c1c] border-y border-gray-200 dark:border-gray-800;
-
-    .page-container {
-      @apply py-10 lg:py-16;
+    .layer-summary {
+      @apply text-[#9fb0cc];
     }
 
-    ol {
-      @apply grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6 mt-4 lg:mt-7;
+    .story-subhead {
+      @apply text-white;
     }
 
-    li {
-      @apply flex flex-col gap-2 lg:gap-2.5 p-[18px] lg:p-[26px] bg-[#f8f9fa] dark:bg-[#121212] border border-gray-200 dark:border-gray-800 rounded-2xl;
+    .story-text {
+      @apply text-[#c8d2e4];
     }
 
-    .num {
-      @include header-font;
-      @apply text-[13px] lg:text-sm font-extrabold text-teal-700 dark:text-teal-300;
-    }
+    .journey {
+      @apply flex flex-col max-w-[36em] mt-5;
 
-    h3 {
-      @apply text-[17px] lg:text-[19px] font-bold leading-snug;
-    }
+      li {
+        @apply relative grid grid-cols-[2.25rem_1fr] pb-7;
 
-    p {
-      @apply text-[15px] lg:text-base font-medium leading-relaxed text-gray-600 dark:text-gray-300;
-    }
-  }
+        &:last-child {
+          @apply pb-0;
+        }
 
-  .about-experience {
-    @apply flex flex-col lg:flex-row gap-3 lg:gap-16 pt-10 lg:pt-[72px];
+        // the line joining one step to the next
+        &:not(:last-child)::before {
+          content: "";
+          @apply absolute left-[11.5px] top-7 bottom-1 w-px bg-white/15;
+        }
+      }
 
-    .intro {
-      @apply lg:w-[280px] lg:shrink-0 flex flex-col gap-2 lg:gap-3;
+      h4 {
+        @include header-font;
+        @apply text-base lg:text-[17px] font-bold text-white;
+      }
 
       p {
-        @apply text-base lg:text-[17px] font-medium leading-relaxed text-gray-600 dark:text-gray-300;
+        @apply mt-1.5 text-[15px] lg:text-base leading-relaxed text-[#b9c3d8];
       }
     }
 
-    > ol {
-      @apply flex-1 min-w-0 border-b border-gray-200 dark:border-gray-800;
-
-      > li {
-        @apply flex flex-col lg:flex-row gap-1.5 lg:gap-8 py-5 lg:py-[26px] border-t border-gray-200 dark:border-gray-800;
-      }
-    }
-
-    .duration {
+    .journey-num {
       @include header-font;
-      @apply lg:w-[170px] lg:shrink-0 lg:pt-0.5 text-[13px] lg:text-sm font-semibold tabular-nums text-gray-500 dark:text-gray-400;
+      @apply grid place-items-center w-6 h-6 rounded-full border border-teal-300/60 text-[10px] font-extrabold text-teal-300;
     }
 
-    .entry {
-      @apply flex-1 min-w-0 flex flex-col items-start gap-1.5 lg:gap-2;
+    // tea · journaling · gym and sports · music, as plain text
+    .story-inline {
+      @apply flex flex-wrap gap-y-1 text-base lg:text-[17px] font-medium text-[#c8d2e4];
 
-      h3 {
-        @apply text-base lg:text-lg font-bold leading-snug;
-      }
-
-      p,
-      ul {
-        @apply text-[15px] lg:text-base font-medium leading-relaxed text-gray-600 dark:text-gray-300;
-      }
-
-      ul {
-        @apply list-disc pl-5 flex flex-col gap-1.5;
-      }
-
-      .text-link {
-        @apply py-1.5 lg:py-0;
+      li + li::before {
+        content: "·";
+        @apply mx-3 text-teal-300;
       }
     }
   }
 
+  // ---- the 3D stack ----
+  .stack-aside {
+    @apply hidden lg:block;
+  }
+
+  .stack-sticky {
+    @apply sticky z-10 flex items-center justify-center;
+    top: 73px;
+    height: calc(100vh - 73px);
+  }
+
+  // phones and tablets: a faint stack that stays on screen while the story scrolls
+  // over it. It takes no space in the page (negative margin) and ignores touches.
+  .stack-mobile {
+    @apply lg:hidden sticky z-[5] flex items-center justify-center pointer-events-none;
+    top: 60px;
+    height: calc(100vh - 60px);
+    height: calc(100svh - 60px);
+    margin-bottom: calc(60px - 100vh);
+    margin-bottom: calc(60px - 100svh);
+  }
+
+  .layer-stack.is-ambient {
+    --plate-w: 250px;
+    --plate-h: 158px;
+    --gap: 44px;
+    --active-lift: 6px;
+    @apply h-full;
+
+    // a slight turn as the reader moves through the story
+    .stack-plates {
+      transform: rotateX(calc(60deg - var(--story-progress, 0) * 6deg))
+        rotateZ(calc(-38deg + var(--story-progress, 0) * 14deg));
+    }
+  }
+
+  .layer-stack {
+    --plate-w: 190px;
+    --plate-h: 120px;
+    --gap: 34px;
+    --active-lift: 7px;
+    @apply relative flex items-center justify-center w-full h-[290px];
+    perspective: 1400px;
+
+    @media (min-width: 1024px) {
+      --plate-w: 270px;
+      --plate-h: 170px;
+      --gap: 54px;
+      --active-lift: 14px;
+      height: 460px;
+    }
+
+    @media (min-width: 1280px) {
+      --plate-w: 300px;
+      --plate-h: 186px;
+      --gap: 58px;
+    }
+  }
+
+  .stack-plates {
+    @apply relative;
+    width: var(--plate-w);
+    height: var(--plate-h);
+    transform-style: preserve-3d;
+    transform: rotateX(60deg) rotateZ(-38deg);
+  }
+
+  // plate 01 sits on top, plate 05 at the bottom
+  .layer-plate {
+    --lift: 0px;
+    @apply absolute inset-0 flex items-end gap-2 p-3 lg:p-4 rounded-2xl border cursor-pointer;
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(20, 33, 61, 0.18);
+    box-shadow: 0 10px 24px rgba(20, 33, 61, 0.07);
+    transform: translateZ(calc((2 - var(--i)) * var(--gap) + var(--lift)));
+    transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1), background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      --lift: 5px;
+      border-color: rgba(20, 33, 61, 0.4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #0d9488;
+      outline-offset: 3px;
+    }
+
+    .plate-num,
+    .plate-name {
+      @include header-font;
+      @apply text-[10px] lg:text-[11px] font-bold uppercase tracking-widest text-gray-400;
+    }
+
+    .plate-name {
+      @apply text-gray-500;
+    }
+
+    &.is-active {
+      --lift: var(--active-lift);
+      background: rgba(240, 253, 250, 0.96);
+      border-color: #0f766e;
+      box-shadow: 0 0 0 1px #0f766e, 0 16px 34px rgba(15, 118, 110, 0.2);
+
+      .plate-num,
+      .plate-name {
+        @apply text-teal-700;
+      }
+    }
+  }
+
+  // ---- phone and tablet bar ----
+  .layer-bar {
+    @apply lg:hidden sticky z-20 -mx-5 md:-mx-8 px-5 md:px-8 py-1 flex items-center gap-4 bg-[#f8f9fa]/90 dark:bg-[#121212]/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 transition-colors duration-300;
+    top: 60px;
+  }
+
+  .bar-current {
+    @include header-font;
+    @apply min-w-[112px] text-[13px] font-bold whitespace-nowrap text-[#14213d] dark:text-white;
+
+    b {
+      @apply text-teal-700 dark:text-teal-300 tabular-nums;
+    }
+  }
+
+  .bar-segments {
+    @apply flex-1 grid grid-cols-5 gap-1.5;
+
+    a {
+      @apply block py-3.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-600;
+    }
+
+    span {
+      @apply block h-1 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors duration-300;
+    }
+
+    .is-past span {
+      @apply bg-teal-600/40 dark:bg-teal-300/40;
+    }
+
+    [aria-current] span {
+      @apply bg-teal-600 dark:bg-teal-300;
+    }
+  }
+
+  // ---- skills, after the five chapters (kept as before) ----
   .about-skills {
-    @apply pt-10 lg:pt-16;
+    @apply pt-12 pb-14 lg:pt-20 lg:pb-24 scroll-mt-20 lg:scroll-mt-24;
 
     .skill-groups {
       @apply grid grid-cols-1 lg:grid-cols-3 items-start gap-3.5 lg:gap-6 mt-3.5 lg:mt-7;
@@ -665,43 +913,145 @@ nav#nav-bar {
         @apply text-[15px] lg:text-[17px] font-bold;
       }
 
+      .skill-head {
+        @apply flex items-center gap-3;
+      }
+
+      // the group's icon, in the same teal square as the case study highlights
+      .skill-icon {
+        @apply shrink-0 flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-[10px] bg-teal-50 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300;
+
+        svg {
+          @apply w-5 h-5;
+        }
+      }
+
       .chips {
         @apply mt-3 lg:mt-4;
       }
     }
   }
+}
 
-  .about-extras {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-3.5 lg:gap-6 pt-10 lg:pt-16 pb-12 lg:pb-[88px];
+// dark plates: in dark theme everywhere, and over the dark Foundation band in light theme
+[data-theme="dark"] .about-page,
+.about-page.is-deep {
+  .layer-plate {
+    background: rgba(28, 28, 28, 0.88);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 
-    section {
-      @apply p-[18px] lg:p-[26px] bg-white dark:bg-[#1c1c1c] border border-gray-200 dark:border-gray-800 rounded-2xl;
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.32);
     }
 
-    h2 {
-      @apply text-lg lg:text-[22px];
+    .plate-num {
+      @apply text-gray-500;
     }
 
-    .school {
-      @apply mt-3 lg:mt-4;
+    .plate-name {
+      @apply text-gray-400;
+    }
 
-      p:first-child {
-        @include header-font;
-        @apply text-[15px] lg:text-[17px] font-bold;
+    &.is-active {
+      background: rgba(19, 78, 74, 0.62);
+      border-color: #5eead4;
+      box-shadow: 0 0 0 1px #5eead4, 0 16px 34px rgba(94, 234, 212, 0.16);
+
+      .plate-num,
+      .plate-name {
+        @apply text-teal-300;
       }
+    }
+  }
+}
 
-      p:last-child {
-        @apply mt-1 text-[15px] lg:text-base font-medium text-gray-600 dark:text-gray-300;
-      }
+// the phone bar over the dark Foundation band
+.about-page.is-deep {
+  .layer-bar {
+    @apply bg-[#0d1830]/90 border-white/10;
+  }
+
+  .bar-current {
+    @apply text-white;
+
+    b {
+      @apply text-teal-300;
+    }
+  }
+
+  .bar-segments {
+    span {
+      @apply bg-white/20;
     }
 
-    .interests {
-      @apply mt-3 lg:mt-4;
-
-      li {
-        @apply bg-teal-50 text-teal-800 dark:bg-teal-900/40 dark:text-teal-100 lg:text-sm;
-      }
+    .is-past span {
+      @apply bg-teal-300/40;
     }
+
+    [aria-current] span {
+      @apply bg-teal-300;
+    }
+  }
+}
+
+// deeper bands in dark theme
+[data-theme="dark"] .about-page {
+  .layer-section {
+    --band: #121212;
+  }
+
+  .layer-api {
+    --band: #151618;
+  }
+
+  .layer-logic {
+    --band: #18191c;
+  }
+
+  .layer-data {
+    --band: #1b1d21;
+  }
+
+  .layer-foundation {
+    --band: #0b1426;
+  }
+}
+
+// phone background stack: outlines only, faint enough to read the story over
+.about-page .stack-mobile {
+  --ambient-line: rgba(20, 33, 61, 0.13);
+  --ambient-active: rgba(15, 118, 110, 0.5);
+  --ambient-fill: rgba(15, 118, 110, 0.05);
+
+  .layer-plate {
+    background: transparent;
+    border-color: var(--ambient-line);
+    box-shadow: none;
+
+    &.is-active {
+      background: var(--ambient-fill);
+      border-color: var(--ambient-active);
+      box-shadow: none;
+    }
+  }
+}
+
+[data-theme="dark"] .about-page .stack-mobile,
+.about-page.is-deep .stack-mobile {
+  --ambient-line: rgba(255, 255, 255, 0.09);
+  --ambient-active: rgba(94, 234, 212, 0.45);
+  --ambient-fill: rgba(94, 234, 212, 0.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .layer-plate {
+    transition: none;
+  }
+
+  // same selector as the tilt rule, so this one wins
+  .about-page .layer-stack.is-ambient .stack-plates {
+    transform: rotateX(60deg) rotateZ(-38deg);
   }
 }
 

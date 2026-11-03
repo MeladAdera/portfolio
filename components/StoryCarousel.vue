@@ -57,7 +57,9 @@ function onScroll() {
     let closest = 0;
     let best = Infinity;
     cards.forEach((card, i) => {
-      const distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - middle);
+      const distance = Math.abs(
+        card.offsetLeft + card.offsetWidth / 2 - middle,
+      );
       if (distance < best) {
         best = distance;
         closest = i;
@@ -90,7 +92,11 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
       <article
         v-for="(step, i) in steps"
         :key="step.keyword"
-        :ref="(el) => { if (el) cards[i] = el; }"
+        :ref="
+          (el) => {
+            if (el) cards[i] = el;
+          }
+        "
         class="story-card"
         :class="{ 'is-active': i === active }"
         :aria-label="`Step ${i + 1} of ${steps.length}: ${step.title} ${step.accent}`"
@@ -99,7 +105,11 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
         <div class="story-photo">
           <img
             v-if="!missing[i]"
-            :ref="(el) => { if (el) images[i] = el; }"
+            :ref="
+              (el) => {
+                if (el) images[i] = el;
+              }
+            "
             :src="step.image"
             :alt="step.alt"
             width="1080"
@@ -112,12 +122,18 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
           </div>
         </div>
         <div class="story-meta">
-          <span class="story-count"><span><b>{{ pad(i + 1) }}</b> / {{ total }}</span></span>
+          <span class="story-count"
+            ><span
+              ><b>{{ pad(i + 1) }}</b> / {{ total }}</span
+            ></span
+          >
           <span>Melad Adera</span>
         </div>
         <div class="story-content">
           <p class="story-keyword">{{ step.keyword }}</p>
-          <h3>{{ step.title }} <span>{{ step.accent }}</span></h3>
+          <h3>
+            {{ step.title }} <span>{{ step.accent }}</span>
+          </h3>
           <div class="story-body">
             <template v-for="(part, k) in step.body" :key="k">
               <blockquote v-if="part.quote">“{{ part.quote }}”</blockquote>
@@ -151,7 +167,8 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
           :aria-current="i === active ? 'step' : undefined"
           @click="goTo(i)"
         >
-          <b>{{ pad(i + 1) }}</b><span>{{ step.keyword }}</span>
+          <b>{{ pad(i + 1) }}</b
+          ><span>{{ step.keyword }}</span>
         </button>
       </div>
       <button

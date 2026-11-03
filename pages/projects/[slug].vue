@@ -92,7 +92,10 @@ useHead({
       </div>
 
       <div v-if="project.screenshot" class="page-container">
-        <div class="case-cover" :style="`background-color: ${project.cardColor};`">
+        <div
+          class="case-cover"
+          :style="`background-color: ${project.cardColor};`"
+        >
           <div class="dots" aria-hidden="true">
             <span></span>
             <span></span>

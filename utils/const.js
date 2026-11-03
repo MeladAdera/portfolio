@@ -13,9 +13,11 @@ export function useConstants() {
     },
   ];
 
+  // `icon` picks the icon shown on each group's card (mapped in pages/About.vue)
   const skills = [
     {
       name: "Frontend",
+      icon: "frontend",
       items: [
         "React",
         "Next.js",
@@ -37,6 +39,7 @@ export function useConstants() {
     },
     {
       name: "Backend & data",
+      icon: "backend",
       items: [
         "Node.js",
         "NestJS",
@@ -53,16 +56,166 @@ export function useConstants() {
     },
     {
       name: "Testing & tools",
+      icon: "tools",
       items: ["Jest", "Cypress", "Git & GitHub", "Docker"],
     },
   ];
 
-  const interests = [
-    "Black tea to start the day",
-    "Journaling",
-    "The gym and sports",
-    "Music",
+  // ---------------------------------------------------------------------------
+  // About page: "Melad, layer by layer". All of this text is a draft to edit.
+  // ---------------------------------------------------------------------------
+
+  // the five chapters, from the surface down to the core; `anchor` is the section id
+  const layers = [
+    {
+      anchor: "who-i-am",
+      name: "Interface",
+      title: "The part you meet first.",
+      summary: "Who I am, before any code.",
+    },
+    {
+      anchor: "working-with-me",
+      name: "API",
+      title: "How to work with me.",
+      summary: "What working together with me looks like.",
+    },
+    {
+      anchor: "how-i-think",
+      name: "Logic",
+      title: "How I think.",
+      summary: "Four principles I try to follow in every project.",
+    },
+    {
+      anchor: "how-i-handle-data",
+      name: "Data",
+      title: "What I pay attention to.",
+      summary:
+        "The information behind an application matters as much as the screens on top of it.",
+    },
+    {
+      anchor: "foundation",
+      name: "Foundation",
+      title: "What everything stands on.",
+      summary: "The path that got me here, and the habits that keep me going.",
+    },
   ];
+
+  // Layer 01: Interface
+  const intro = {
+    name: "Melad Adera",
+    role: "Full Stack Developer",
+    paragraphs: [
+      "I'm a developer from Latakia, Syria. What I enjoy most is understanding how a system works as a whole, not just the part in front of me.",
+      "That's why I like building complete web applications, from the data underneath to the screen people use. When I understand every layer, I can make them work well together.",
+    ],
+  };
+
+  // Layer 02: API (working with me)
+  const facts = [
+    { label: "Where I am", text: "Based in Latakia, Syria, on UTC+3." },
+    { label: "Languages", text: "Arabic (native) and English." },
+    {
+      label: "Availability",
+      text: "Open to full-time and freelance opportunities.",
+    },
+  ];
+  const collaboration = [
+    "I believe good collaboration starts with clear expectations, honest communication, and keeping everyone informed.",
+    "I'd rather agree on realistic expectations at the start and share progress along the way than surprise anyone at the end.",
+  ];
+
+  // Layer 03: Logic (how I think)
+  const principles = [
+    {
+      title: "Understand why, not just how.",
+      text: "When something works, I want to know why it works. That makes it easier to fix when it breaks, and to explain to the next developer.",
+      example:
+        "Since my first step into software, I've studied how technologies and systems work, not only how to use them.",
+    },
+    {
+      title: "Own the whole feature.",
+      text: "A feature isn't finished until the data, the API and the screen all work together.",
+      example:
+        "On SportBooker I built screens for players, operators and admins, and also worked on the NestJS APIs, PostgreSQL migrations and auth flows behind them.",
+    },
+    {
+      title: "Plan for bad networks.",
+      text: "Real users don't always have a fast, stable connection, so the app should keep working when things go wrong.",
+      example:
+        "The Inventory Distribution System works offline: sales and stock changes are queued and synced when the connection comes back.",
+    },
+    {
+      title: "Leave code cleaner.",
+      text: "Every change is a chance to make the code easier for the next person to understand.",
+      example:
+        "Much of my freelance work on Khamsat was refactoring messy and AI-generated code into clean, maintainable solutions.",
+    },
+  ];
+
+  // Layer 04: Data (what I pay attention to)
+  const dataPoints = [
+    {
+      title: "Consistent data.",
+      text: "Numbers people rely on should stay correct over time.",
+      example:
+        "In the inventory system, money and stock are kept in immutable ledgers, and each sale keeps a snapshot of its cost.",
+    },
+    {
+      title: "Structure before code.",
+      text: "I think about the database structure before building the feature on top of it.",
+      example:
+        "The inventory platform started from a multi-tenant model for warehouse admins, shop owners and employees.",
+    },
+    {
+      title: "Understanding how data moves.",
+      text: "I follow data from the moment it's entered to every place it ends up.",
+      example:
+        "In the inventory system, data moves from order to approval, shipment, receipt and stock sync, and changes made offline sync back when the connection returns.",
+    },
+    {
+      title: "Making sure the interface and backend agree.",
+      text: "The screen and the API should mean the same thing by the same data.",
+      example:
+        "On SportBooker I connected the frontend to the APIs for authentication, bookings, schedules and users, and worked on the migrations behind them.",
+    },
+  ];
+  const education = [
+    {
+      school: "Tishreen University",
+      degree: "Computer and Control Engineering",
+    },
+  ];
+
+  // Layer 05: Foundation
+  const journey = [
+    {
+      title: "Where it all began",
+      text: "Three years of studying Computer and Control Engineering at Tishreen University, and one question: how could I create real value from what I was learning?",
+    },
+    {
+      title: "Learning the fundamentals",
+      text: "About two years ago I started studying technologies and systems seriously, to understand not only how things work, but why.",
+    },
+    {
+      title: "First real projects",
+      text: "Projects of my own, like Shopverse, an online store with a customer storefront and an admin dashboard.",
+    },
+    {
+      title: "Working with clients",
+      text: "Freelancing on Khamsat through 2025: client web apps, Figma designs turned into pages, and messy code made maintainable.",
+    },
+    {
+      title: "More complex systems",
+      text: "SportBooker, a multi-tenant booking platform for the Syrian community, and then the Inventory Distribution System.",
+    },
+    {
+      title: "The goal",
+      text: "To understand the systems I build, learn from my mistakes and keep improving. I'm still learning, and still building.",
+    },
+  ];
+  const values =
+    "Progress comes from consistency more than talent. I try to learn something every day, practise until it sticks, and treat every mistake as a lesson. Discipline is what turns curiosity into real skill.";
+  const interests = ["Black tea", "Journaling", "Gym and sports", "Music"];
 
   // story cards for components/StoryCarousel.vue (not on a page right now).
   // Put each photo in public/story/ under the name in `image`; until that file
@@ -88,7 +241,10 @@ export function useConstants() {
       icon: "curiosity",
       body: [
         "Throughout those years, I kept asking myself one question:",
-        { quote: "How could I create real value from everything I was learning?" },
+        {
+          quote:
+            "How could I create real value from everything I was learning?",
+        },
         "I didn't just want knowledge. I wanted to put it into practice.",
       ],
     },
@@ -312,18 +468,6 @@ export function useConstants() {
       duration: "Jan 2025 – Dec 2025",
       summary:
         "Client apps, Figma-to-frontend builds and cleanup of messy codebases.",
-      points: [
-        "Refactored messy and AI-generated code into maintainable apps.",
-        "Turned Figma designs into mobile-friendly pages.",
-        "Fixed bugs across frontend, backend and database, and sped up slow queries.",
-      ],
-    },
-  ];
-
-  const education = [
-    {
-      school: "Tishreen University",
-      degree: "Computer and Control Engineering",
     },
   ];
 
@@ -342,11 +486,19 @@ export function useConstants() {
   return {
     navigation,
     skills,
+    layers,
+    intro,
+    facts,
+    collaboration,
+    principles,
+    dataPoints,
+    education,
+    journey,
+    values,
     interests,
     story,
     projects,
     timeline,
-    education,
     featuredStack,
   };
 }
