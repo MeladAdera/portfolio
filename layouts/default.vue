@@ -1,7 +1,10 @@
 <template>
   <div>
     <NavBar />
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <ContactBand />
     <Footer />
   </div>
 </template>

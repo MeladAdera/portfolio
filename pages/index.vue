@@ -1,4 +1,5 @@
 <script setup>
+const { projects, timeline, featuredStack } = useConstants();
 const jsonLd = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
@@ -9,10 +10,10 @@ const jsonLd = {
   },
   url: "https://www.meladadera.com/",
   description:
-    "Personal Portfolio Website. Hi, I am Melad Adera. I'm a Full Stack Developer based in Dubai, UAE. Currently focused on developing website using React, Next.js, Node.js, NestJS and PostgreSQL. Checkout my projects and github repositories",
+    "Personal Portfolio Website. Hi, I am Melad Adera. I'm a Full Stack Developer based in Latakia, Syria. Currently focused on developing website using React, Next.js, Node.js, NestJS and PostgreSQL. Checkout my projects and github repositories",
   keywords:
     "Web Developer, Front End Developer, Frontend Developer, Junior Web Developer, Software Developer, Software Engineer, Melad Adera, ",
-  image: "https://www.meladadera.com/profile-pics/profile.jpeg",
+  image: "https://www.meladadera.com/profile-pics/home.jpg",
 };
 const personJson = {
   "@context": "https://schema.org/",
@@ -34,12 +35,13 @@ useHead({
     },
   ],
 });
-definePageMeta({
-  layout: false,
-});
 </script>
 <template>
-  <NuxtLayout name="main">
-    <Header />
+  <NuxtLayout name="default">
+    <HomeLanding
+      :projects="projects"
+      :timeline="timeline"
+      :stack="featuredStack"
+    />
   </NuxtLayout>
 </template>

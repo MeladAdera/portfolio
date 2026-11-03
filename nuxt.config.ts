@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         {
           name: "keywords",
           content:
-            "Melad Adera, Full Stack Developer, Web Developer, React, Next.js, TypeScript, NestJS, PostgreSQL, Dubai, Freelance",
+            "Melad Adera, Full Stack Developer, Web Developer, React, Next.js, TypeScript, NestJS, PostgreSQL, Latakia, Syria, Freelance",
         },
         {
           property: "og:site_name",
@@ -44,11 +44,17 @@ export default defineNuxtConfig({
         },
         {
           property: "og:image",
-          content: "https://www.meladadera.com/profile-pics/profile.jpeg",
+          content: "https://www.meladadera.com/profile-pics/home.jpg",
         },
       ],
       link: [{ rel: "icon", href: "/brand/favicon-ma.svg", type: "image/svg+xml" }],
     },
+  },
+  // old pages that were folded into others, kept so existing links still work
+  routeRules: {
+    "/works": { redirect: { to: "/projects", statusCode: 301 } },
+    "/skills": { redirect: { to: "/about#skills", statusCode: 301 } },
+    "/contact": { redirect: { to: "/#contact", statusCode: 301 } },
   },
   modules: ["@nuxtjs/tailwindcss"],
   tailwindcss: {
