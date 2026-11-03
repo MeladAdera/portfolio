@@ -344,7 +344,7 @@ export function useConstants() {
         "Zustand",
         "Docker",
       ],
-      urlLink: "https://inventory-distribution-system-fe-one.vercel.app",
+      urlLink: "https://alyamen-distribution-system.vercel.app",
     },
     {
       slug: "sportbooker",

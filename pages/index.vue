@@ -43,5 +43,6 @@ useHead({
       :timeline="timeline"
       :stack="featuredStack"
     />
+    <ContactBand />
   </NuxtLayout>
 </template>

@@ -59,8 +59,12 @@ const isActive = (href) => {
   return path === href || path.startsWith(href + "/");
 };
 
-// the contact band is in the default layout, so it's on every page
+// Home has the contact band and About ends with an "Email me" link, both at #contact;
+// pages without one send the visitor to the home page's contact band
 const scrollToContact = () => {
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const target = document.getElementById("contact");
+  if (!target) return navigateTo("/#contact");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
 };
 </script>

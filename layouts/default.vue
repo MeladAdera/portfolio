@@ -4,7 +4,6 @@
     <main>
       <slot />
     </main>
-    <ContactBand />
     <Footer />
   </div>
 </template>

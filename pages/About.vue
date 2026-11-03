@@ -285,6 +285,16 @@ useHead({
           </div>
         </div>
       </section>
+
+      <!-- next: email me (the menu's Contact lands here on this page) -->
+      <div id="contact" class="page-container about-next">
+        <a href="mailto:dev.melad.adera@gmail.com" class="next-link">
+          <span class="next-label">Next</span>
+          <span class="next-title"
+            >Email me<span class="next-arrow" aria-hidden="true">→</span></span
+          >
+        </a>
+      </div>
     </div>
   </NuxtLayout>
 </template>
