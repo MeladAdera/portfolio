@@ -7,15 +7,15 @@
 		<loc>https://www.meladadera.com/about</loc>
 	</url>
 	<url>
-		<loc>https://www.meladadera.com/skills</loc>
-	</url>
-	<url>
 		<loc>https://www.meladadera.com/projects</loc>
 	</url>
 	<url>
-		<loc>https://www.meladadera.com/works</loc>
+		<loc>https://www.meladadera.com/projects/inventory</loc>
 	</url>
 	<url>
-		<loc>https://www.meladadera.com/contact</loc>
+		<loc>https://www.meladadera.com/projects/sportbooker</loc>
+	</url>
+	<url>
+		<loc>https://www.meladadera.com/projects/shopverse</loc>
 	</url>
 </urlset>

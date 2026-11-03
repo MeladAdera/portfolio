@@ -17,7 +17,7 @@
         <!-- social - start -->
         <nav class="footer-social" aria-label="Social links">
           <a
-            href="https://www.instagram.com/melad.adera/"
+            href="https://www.instagram.com/melad.dev"
             aria-label="Instagram"
             target="_blank"
             rel="noopener noreferrer"

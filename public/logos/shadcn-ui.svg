@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Shadcn UI">
-  <rect width="100" height="100" rx="18" fill="#18181b" stroke="#3f3f46" stroke-width="2"/>
-  <path d="M72 26 30 68" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
-  <path d="M52 24v30" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
-</svg>
