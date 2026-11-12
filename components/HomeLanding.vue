@@ -1,5 +1,9 @@
 <script setup>
-import { ArrowDownTrayIcon, ArrowRightIcon } from "@heroicons/vue/24/outline";
+import {
+  ArrowDownIcon,
+  ArrowDownTrayIcon,
+  ArrowRightIcon,
+} from "@heroicons/vue/24/outline";
 
 const props = defineProps({
   projects: {
@@ -72,6 +76,23 @@ const props = defineProps({
           >
           <span class="hidden sm:inline">dev.melad.adera@gmail.com</span>
         </div>
+        <nav class="hero-jump" aria-label="Jump to">
+          <span class="label">Jump to</span>
+          <ul>
+            <li>
+              <a href="#projects">Projects <ArrowDownIcon /></a>
+            </li>
+            <li>
+              <a href="#experience">Experience <ArrowDownIcon /></a>
+            </li>
+            <li>
+              <NuxtLink href="/about">About me <ArrowRightIcon /></NuxtLink>
+            </li>
+            <li>
+              <a href="#contact">Contact <ArrowDownIcon /></a>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div class="hero-photo">
         <img
@@ -99,7 +120,7 @@ const props = defineProps({
     </section>
 
     <!-- projects -->
-    <section class="page-container home-projects">
+    <section id="projects" class="page-container home-projects">
       <div class="section-head">
         <h2>Selected projects</h2>
         <NuxtLink href="/projects" class="text-link">All projects →</NuxtLink>
@@ -114,7 +135,7 @@ const props = defineProps({
     </section>
 
     <!-- experience -->
-    <section class="page-container home-experience">
+    <section id="experience" class="page-container home-experience">
       <div class="intro">
         <h2>Experience</h2>
         <p>Product and client work since 2025, mostly full stack.</p>

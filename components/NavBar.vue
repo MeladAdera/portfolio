@@ -5,6 +5,8 @@
         <img :src="logo" width="36" height="36" alt="" />
         <span>MA.</span>
       </NuxtLink>
+
+      <!-- desktop only; on mobile the home page links to every section -->
       <div class="nav-links">
         <NuxtLink
           v-for="item in navigation"
@@ -17,17 +19,18 @@
         <a href="#contact" class="nav-contact" @click.prevent="scrollToContact"
           >Contact</a
         >
-        <button
-          type="button"
-          class="theme-toggle"
-          aria-label="Dark theme"
-          :aria-pressed="enabled"
-          @click="toggleTheme()"
-        >
-          <SunIcon v-if="!enabled" />
-          <MoonIcon v-else />
-        </button>
       </div>
+
+      <button
+        type="button"
+        class="theme-toggle"
+        aria-label="Dark theme"
+        :aria-pressed="enabled"
+        @click="toggleTheme()"
+      >
+        <SunIcon v-if="!enabled" />
+        <MoonIcon v-else />
+      </button>
     </div>
   </nav>
 </template>
