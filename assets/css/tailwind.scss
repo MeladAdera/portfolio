@@ -16,12 +16,13 @@ html {
   }
 }
 
-// Navigation Bar: three items fit on a 360px phone, so there's no drawer
+// Navigation Bar: inline links from lg up; below lg only the logo and theme toggle,
+// the bar scrolls away, and the home page's "Jump to" links do the navigating
 nav#nav-bar {
-  @apply sticky top-0 z-30 w-full bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-gray-800;
+  @apply relative lg:sticky top-0 z-30 w-full bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-gray-800;
 
   .nav-inner {
-    @apply max-w-6xl mx-auto h-[60px] lg:h-[72px] pl-4 pr-1.5 md:px-8 flex items-center justify-between gap-2;
+    @apply max-w-6xl mx-auto h-[60px] lg:h-[72px] px-4 md:px-8 flex items-center justify-between gap-2;
   }
 
   .home-button {
@@ -39,7 +40,7 @@ nav#nav-bar {
 
   .nav-links {
     @include header-font;
-    @apply flex items-center text-[15px] font-semibold lg:gap-5;
+    @apply hidden lg:flex lg:ml-auto items-center text-[15px] font-semibold lg:gap-5;
 
     > a:not(.nav-contact) {
       @apply px-2.5 py-3 lg:px-1 lg:py-2 text-[#14213d] dark:text-white hover:text-teal-700 dark:hover:text-teal-300 transition-colors duration-150;
@@ -55,7 +56,7 @@ nav#nav-bar {
   }
 
   .theme-toggle {
-    @apply inline-flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 lg:border border-gray-200 dark:border-gray-700 rounded-[10px] text-[#14213d] dark:text-white;
+    @apply inline-flex items-center justify-center w-10 h-10 lg:ml-5 border border-gray-200 dark:border-gray-700 rounded-[10px] text-[#14213d] dark:text-white;
 
     svg {
       @apply w-5 h-5;
@@ -463,6 +464,29 @@ nav#nav-bar {
       }
     }
 
+    // mobile only: the nav bar has no links below lg, so the hero links to every section
+    .hero-jump {
+      @apply lg:hidden pt-2;
+
+      .label {
+        @include header-font;
+        @apply block mb-3 text-xs font-bold uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400;
+      }
+
+      ul {
+        @apply grid grid-cols-2 gap-2;
+      }
+
+      a {
+        @include header-font;
+        @apply flex items-center justify-between h-12 px-4 rounded-[10px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1a1a1a] text-[15px] font-semibold text-[#14213d] dark:text-white active:bg-gray-100 dark:active:bg-gray-800 transition-colors duration-150;
+
+        svg {
+          @apply w-4 h-4 text-teal-700 dark:text-teal-300;
+        }
+      }
+    }
+
     .hero-photo {
       @apply relative hidden lg:block w-[340px] xl:w-[360px] shrink-0;
 
@@ -504,6 +528,11 @@ nav#nav-bar {
   }
 
   // projects: swipeable row on phones, three columns on desktop
+  .home-projects,
+  .home-experience {
+    @apply scroll-mt-6 lg:scroll-mt-24;
+  }
+
   .home-projects {
     @apply pt-12 lg:pt-20 pb-6 lg:pb-10;
 
