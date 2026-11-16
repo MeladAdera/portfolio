@@ -65,11 +65,19 @@ useHead({
         <p class="lead">{{ project.intro }}</p>
         <div class="case-actions">
           <a
+            v-if="project.demoLink"
+            :href="project.demoLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+            >Try the live demo ↗</a
+          >
+          <a
             v-if="project.urlLink"
             :href="project.urlLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-primary"
+            :class="project.demoLink ? 'btn-secondary' : 'btn-primary'"
             >Visit live site ↗</a
           >
           <a

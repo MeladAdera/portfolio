@@ -34,6 +34,14 @@ const stack = computed(() => props.project.techStack.slice(0, 4).join(" · "));
           >Case study →</NuxtLink
         >
         <a
+          v-if="project.demoLink"
+          :href="project.demoLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-link"
+          >Live demo ↗</a
+        >
+        <a
           v-if="project.urlLink"
           :href="project.urlLink"
           target="_blank"

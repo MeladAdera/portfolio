@@ -345,6 +345,7 @@ export function useConstants() {
         "Docker",
       ],
       urlLink: "https://alyamen-distribution-system.vercel.app",
+      demoLink: "https://alyamn-demo.vercel.app/",
     },
     {
       slug: "sportbooker",
