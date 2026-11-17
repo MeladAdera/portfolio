@@ -393,7 +393,7 @@ export function useConstants() {
         "REST APIs",
         "i18n",
       ],
-      urlLink: "https://syria-sport.sportbooker.net/",
+      demoLink: "https://sport-booker-frontend.vercel.app/",
       githubLink: "https://github.com/MeladAdera/SportBooker-frontend",
       githubLinkBackend: "https://github.com/MeladAdera/SportBooker-backend",
     },
